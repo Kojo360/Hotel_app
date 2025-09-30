@@ -124,6 +124,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# In serverless environments (like Vercel) where collectstatic may not run,
+# allow Django's staticfiles finders to serve package/app static via WhiteNoise.
+# Set via env: WHITENOISE_USE_FINDERS=true for convenience.
+WHITENOISE_USE_FINDERS = config('WHITENOISE_USE_FINDERS', default=False, cast=bool)
+
 # Media files
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
