@@ -147,3 +147,7 @@ WHATSAPP_PHONE = config('WHATSAPP_PHONE', default='1234567890')
 
 # Security/Proxy headers (important for Vercel/Reverse proxies)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Static data mode (no database reads/writes). When true, views will
+# load content from JSON files committed in the repo instead of ORM.
+USE_STATIC_DATA = config('USE_STATIC_DATA', default=False, cast=bool)

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Golden Lager",
+    "description": "Crisp and refreshing with a smooth finish.",
+    "price": 5.50,
+    "category": "beer",
+    "volume": "330ml",
+    "alcohol_content": "5% ABV",
+    "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800&h=400&fit=crop",
+    "is_featured": true
+  },
+  {
+    "name": "Cabernet Sauvignon",
+    "description": "Rich flavors of blackcurrant and oak.",
+    "price": 9.00,
+    "category": "wine",
+    "volume": "150ml glass",
+    "alcohol_content": "13.5% ABV",
+    "image": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=400&fit=crop",
+    "is_featured": false
+  },
+  {
+    "name": "Classic Mojito",
+    "description": "Mint, lime, rum, and soda — a timeless favorite.",
+    "price": 8.00,
+    "category": "cocktail",
+    "volume": "1 glass",
+    "alcohol_content": "12% ABV",
+    "image": "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&h=400&fit=crop",
+    "is_featured": true
+  },
+  {
+    "name": "Virgin Pina Colada",
+    "description": "Creamy coconut and pineapple, alcohol-free.",
+    "price": 6.00,
+    "category": "mocktail",
+    "volume": "1 glass",
+    "alcohol_content": "Non-alcoholic",
+    "image": "https://images.unsplash.com/photo-1546171753-97d7676e4602?w=800&h=400&fit=crop",
+    "is_featured": false
+  },
+  {
+    "name": "Orange Juice",
+    "description": "Freshly squeezed, full of vitamin C.",
+    "price": 3.50,
+    "category": "juice",
+    "volume": "300ml",
+    "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&h=400&fit=crop",
+    "is_featured": false
+  },
+  {
+    "name": "Espresso",
+    "description": "Strong and bold Italian coffee shot.",
+    "price": 2.50,
+    "category": "hot_beverage",
+    "volume": "60ml",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=400&fit=crop",
+    "is_featured": false
+  },
+  {
+    "name": "Cola",
+    "description": "Classic fizzy soft drink.",
+    "price": 2.00,
+    "category": "soft_drink",
+    "volume": "330ml can",
+    "image": "https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=800&h=400&fit=crop",
+    "is_featured": false
+  },
+  {
+    "name": "Whiskey",
+    "description": "Aged spirit with a smoky finish.",
+    "price": 10.00,
+    "category": "spirits",
+    "volume": "50ml",
+    "alcohol_content": "40% ABV",
+    "image": "https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800&h=400&fit=crop",
+    "is_featured": true
+  }
+]

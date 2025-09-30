@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Crispy Calamari",
+    "description": "Lightly battered calamari served with lemon aioli.",
+    "price": 12.50,
+    "image": "https://images.unsplash.com/photo-1523986371872-9d3ba2e2c580?w=800&h=400&fit=crop",
+    "category": "appetizer"
+  },
+  {
+    "name": "Garden Salad",
+    "description": "Fresh greens, cherry tomatoes, cucumbers, and vinaigrette.",
+    "price": 8.75,
+    "image": "https://images.unsplash.com/photo-1556800572-1b8e0c5a2e1d?w=800&h=400&fit=crop",
+    "category": "appetizer"
+  },
+  {
+    "name": "Grilled Chicken",
+    "description": "Herb-marinated chicken breast with roasted vegetables.",
+    "price": 18.00,
+    "image": "https://images.unsplash.com/photo-1543352634-8731f2dfc2a7?w=800&h=400&fit=crop",
+    "category": "main"
+  },
+  {
+    "name": "Beef Steak",
+    "description": "Juicy sirloin steak cooked to perfection.",
+    "price": 24.00,
+    "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&h=400&fit=crop",
+    "category": "main"
+  },
+  {
+    "name": "Chocolate Lava Cake",
+    "description": "Warm chocolate cake with a gooey center.",
+    "price": 9.50,
+    "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476a?w=800&h=400&fit=crop",
+    "category": "dessert"
+  },
+  {
+    "name": "Fruit Tart",
+    "description": "Buttery crust filled with custard and fresh fruits.",
+    "price": 7.25,
+    "image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&h=400&fit=crop",
+    "category": "dessert"
+  },
+  {
+    "name": "Fresh Lemonade",
+    "description": "Classic lemonade made from fresh lemons.",
+    "price": 4.50,
+    "image": "https://images.unsplash.com/photo-1497534446932-c925b458314e?w=800&h=400&fit=crop",
+    "category": "beverage"
+  },
+  {
+    "name": "Iced Tea",
+    "description": "Refreshing iced tea with a hint of mint.",
+    "price": 3.75,
+    "image": "https://images.unsplash.com/photo-1528697338600-5cbf956ae2fd?w=800&h=400&fit=crop",
+    "category": "beverage"
+  }
+]

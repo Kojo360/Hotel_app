@@ -20,10 +20,18 @@
                 {% for item in categories.appetizer %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            {% if item.image %}
-                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% if static_mode %}
+                                {% if item.image %}
+                                    <img src="{{ item.image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% endif %}
                             
                             <div class="card-body">
@@ -50,10 +58,18 @@
                 {% for item in categories.main %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            {% if item.image %}
-                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% if static_mode %}
+                                {% if item.image %}
+                                    <img src="{{ item.image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% endif %}
                             
                             <div class="card-body">
@@ -80,10 +96,18 @@
                 {% for item in categories.dessert %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            {% if item.image %}
-                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% if static_mode %}
+                                {% if item.image %}
+                                    <img src="{{ item.image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% endif %}
                             
                             <div class="card-body">
@@ -110,10 +134,18 @@
                 {% for item in categories.beverage %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            {% if item.image %}
-                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% if static_mode %}
+                                {% if item.image %}
+                                    <img src="{{ item.image }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% else %}
-                                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% if item.image %}
+                                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
                             {% endif %}
                             
                             <div class="card-body">

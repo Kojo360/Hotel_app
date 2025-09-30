@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Deluxe Queen Room",
+    "description": "Spacious room with a queen bed, work desk, and balcony overlooking the city.",
+    "price": 120.00,
+    "amenities": "WiFi, Air Conditioning, Smart TV, Mini Fridge, Balcony",
+    "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&h=800&fit=crop"
+  },
+  {
+    "id": 2,
+    "name": "Executive Suite",
+    "description": "Premium suite with separate living area, king bed, and complimentary breakfast.",
+    "price": 220.00,
+    "amenities": "WiFi, Air Conditioning, Smart TV, Coffee Maker, Living Area, Bath Tub",
+    "image": "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d52?w=1200&h=800&fit=crop"
+  }
+]
