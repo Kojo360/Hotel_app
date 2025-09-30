@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "manage.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/media/(.*)", "dest": "/media/$1" },
+    { "src": "/(.*)", "dest": "/manage.py" }
+  ],
+  "env": {
+    "PYTHONUNBUFFERED": "1",
+    "DJANGO_SETTINGS_MODULE": "hotel_app.settings",
+    "SECRET_KEY": "${SECRET_KEY}",
+    "DEBUG": "False"
+  }
+}

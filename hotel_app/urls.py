@@ -3,11 +3,13 @@ URL configuration for hotel_app project.
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('healthz/', lambda r: HttpResponse('ok')),  # simple health check
     path('', include('pages.urls')),
     path('rooms/', include('rooms.urls')),
     path('restaurant/', include('restaurant.urls')),
