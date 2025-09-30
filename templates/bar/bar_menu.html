@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+
+{% block title %}Bar & Beverages - AGYEI TWUM LODGE{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-2">
+            <i class="fas fa-glass-cheers"></i> Bar & Beverages
+        </h1>
+        <p class="text-center text-muted mb-5">Indulge in our exquisite selection of premium drinks</p>
+        
+        <!-- Featured Items -->
+        {% if featured_items %}
+        <div class="mb-5">
+            <h2 class="mb-4 text-center">
+                <i class="fas fa-star text-warning"></i> Featured Drinks
+            </h2>
+            <div class="row g-4">
+                {% for item in featured_items %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 250px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&h=500&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 250px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-warning text-dark">
+                                        <i class="fas fa-star"></i> Featured
+                                    </span>
+                                </div>
+                                <p class="card-text text-muted small mb-2">{{ item.description }}</p>
+                                
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div>
+                                        <h4 class="text-primary mb-0">${{ item.price }}</h4>
+                                        {% if item.volume %}
+                                            <small class="text-muted">{{ item.volume }}</small>
+                                        {% endif %}
+                                    </div>
+                                    {% if item.alcohol_content %}
+                                        <span class="badge bg-secondary">{{ item.alcohol_content }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Beer -->
+        {% if categories.beer %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-beer" style="color: #F39C12;"></i> Beer
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.beer %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #F39C12;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-bottle"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                    {% if item.alcohol_content %}
+                                        <small class="text-muted ms-2"><i class="fas fa-percentage"></i> {{ item.alcohol_content }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Wine -->
+        {% if categories.wine %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-wine-glass" style="color: #8E44AD;"></i> Wine
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.wine %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #8E44AD;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-wine-bottle"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                    {% if item.alcohol_content %}
+                                        <small class="text-muted ms-2"><i class="fas fa-percentage"></i> {{ item.alcohol_content }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Spirits & Liquor -->
+        {% if categories.spirits %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-whiskey-glass" style="color: #C0392B;"></i> Spirits & Liquor
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.spirits %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #C0392B;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-glass"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                    {% if item.alcohol_content %}
+                                        <small class="text-muted ms-2"><i class="fas fa-percentage"></i> {{ item.alcohol_content }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Cocktails -->
+        {% if categories.cocktail %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-cocktail" style="color: #E74C3C;"></i> Cocktails
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.cocktail %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #E74C3C;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-martini-glass"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                    {% if item.alcohol_content %}
+                                        <small class="text-muted ms-2"><i class="fas fa-percentage"></i> {{ item.alcohol_content }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Mocktails -->
+        {% if categories.mocktail %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-glass-martini" style="color: #16A085;"></i> Mocktails
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.mocktail %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1546171753-97d7676e4602?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #16A085;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-glass"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                    {% if item.alcohol_content %}
+                                        <small class="text-success ms-2"><i class="fas fa-check"></i> {{ item.alcohol_content }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Soft Drinks -->
+        {% if categories.soft_drink %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-bottle-water" style="color: #3498DB;"></i> Soft Drinks
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.soft_drink %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #3498DB;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-bottle"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Juices -->
+        {% if categories.juice %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-lemon" style="color: #F1C40F;"></i> Fresh Juices
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.juice %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #F1C40F; color: #333;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-glass"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Hot Beverages -->
+        {% if categories.hot_beverage %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-mug-hot" style="color: #795548;"></i> Hot Beverages
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.hot_beverage %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge" style="background-color: #795548;">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                                
+                                <div class="mt-2">
+                                    {% if item.volume %}
+                                        <small class="text-muted"><i class="fas fa-mug"></i> {{ item.volume }}</small>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Empty State -->
+        {% if not featured_items and not categories.beer and not categories.wine and not categories.spirits and not categories.cocktail and not categories.mocktail and not categories.soft_drink and not categories.juice and not categories.hot_beverage %}
+        <div class="text-center py-5">
+            <i class="fas fa-glass-cheers fa-5x text-muted mb-3"></i>
+            <h3 class="text-muted">Bar Menu Coming Soon</h3>
+            <p>We're curating an amazing selection of beverages for you. Check back soon!</p>
+            <a href="{% url 'pages:contact' %}" class="btn btn-primary">Contact Us</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block title %}Restaurant Menu - AGYEI TWUM LODGE{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-2">
+            <i class="fas fa-utensils"></i> Restaurant Menu
+        </h1>
+        <p class="text-center text-muted mb-5">Savor exquisite cuisine prepared by our expert chefs</p>
+        
+        <!-- Appetizers -->
+        {% if categories.appetizer %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-leaf text-success"></i> Appetizers
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.appetizer %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-success">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Main Courses -->
+        {% if categories.main %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-drumstick-bite text-danger"></i> Main Courses
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.main %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-danger">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Desserts -->
+        {% if categories.dessert %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-ice-cream text-warning"></i> Desserts
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.dessert %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-warning">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Beverages -->
+        {% if categories.beverage %}
+        <div class="mb-5">
+            <h2 class="mb-4 pb-2 border-bottom">
+                <i class="fas fa-mug-hot text-info"></i> Beverages
+            </h2>
+            <div class="row g-4">
+                {% for item in categories.beverage %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&h=400&fit=crop" class="card-img-top" alt="{{ item.name }}" style="height: 200px; object-fit: cover;">
+                            {% endif %}
+                            
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                    <span class="badge bg-info">${{ item.price }}</span>
+                                </div>
+                                <p class="card-text text-muted small">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if not categories.appetizer and not categories.main and not categories.dessert and not categories.beverage %}
+        <div class="text-center py-5">
+            <i class="fas fa-utensils fa-5x text-muted mb-3"></i>
+            <h3 class="text-muted">Menu Coming Soon</h3>
+            <p>Our chef is preparing something special. Please check back later!</p>
+            <a href="{% url 'pages:contact' %}" class="btn btn-primary">Contact Us</a>
+        </div>
+        {% endif %}
+        
+        <!-- Call to Action -->
+        <div class="text-center mt-5 p-5 bg-light rounded">
+            <h3 class="mb-3">Ready to Book Your Stay?</h3>
+            <p class="text-muted mb-4">Enjoy our restaurant and all hotel amenities during your visit</p>
+            <a href="{% url 'rooms:room_list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-bed"></i> View Available Rooms
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

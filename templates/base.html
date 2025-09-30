@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AGYEI TWUM LODGE{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --deep-navy: #001f3f;           /* Deep Navy - Main color */
+            --navy-dark: #001529;           /* Darker Navy */
+            --warm-gold: #D4AF37;           /* Warm Gold - Accent */
+            --gold-light: #F4D03F;          /* Light Gold */
+            --gold-darker: #B8860B;         /* Darker Gold */
+            --light-cream: #FFF8F0;         /* Soft background */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 90px;
+            background-color: var(--light-cream);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Logo Watermark Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            height: 80vh;
+            background-image: url('/static/images/logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Ensure content appears above watermark */
+        nav, main, footer, .container, section {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--deep-navy) 100%);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            padding: 0.8rem 0;
+            border-bottom: 3px solid var(--warm-gold);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--warm-gold) !important;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.95) !important;
+            margin: 0 10px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--warm-gold) !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--warm-gold), var(--gold-darker));
+            border: none;
+            color: var(--deep-navy);
+            font-weight: 700;
+            padding: 10px 25px;
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--gold-light), var(--warm-gold));
+            color: var(--navy-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.4);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid var(--warm-gold);
+            color: var(--warm-gold);
+            font-weight: 600;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--warm-gold);
+            color: var(--deep-navy);
+            border-color: var(--warm-gold);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            border-color: #128C7E;
+            color: white;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--deep-navy) 100%);
+            color: white;
+            padding: 40px 0 20px 0;
+            margin-top: 50px;
+            border-top: 3px solid var(--warm-gold);
+        }
+        
+        footer h5 {
+            color: var(--warm-gold) !important;
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.25);
+            border: 2px solid var(--warm-gold);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--deep-navy) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-section h1 {
+            color: var(--warm-gold) !important;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+        }
+        
+        .text-primary {
+            color: var(--deep-navy) !important;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            color: var(--deep-navy);
+            font-weight: 700;
+        }
+        
+        h2 {
+            border-bottom: 3px solid var(--warm-gold);
+            display: inline-block;
+            padding-bottom: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .badge {
+            background-color: var(--warm-gold) !important;
+            color: var(--deep-navy);
+            font-weight: 600;
+        }
+        
+        /* Gold accents on icons */
+        .fa-primary, .text-success {
+            color: var(--warm-gold) !important;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-cream);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--warm-gold);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-darker);
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
+                {% load static %}
+                <!-- Logo: Replace logo.svg with your own logo.png in static/images/ folder -->
+                <img src="{% static 'images/logo.png' %}" alt="AGYEI TWUM LODGE" height="70" class="me-3" style="object-fit: contain; max-width: 200px;" onerror="this.style.display='none'">
+                <span style="font-size: 1.4rem;">AGYEI TWUM LODGE</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:home' %}">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'rooms:room_list' %}">
+                            <i class="fas fa-bed"></i> Rooms
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'restaurant:menu_list' %}">
+                            <i class="fas fa-utensils"></i> Restaurant
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'bar:bar_menu' %}">
+                            <i class="fas fa-glass-cheers"></i> Bar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pages:contact' %}">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-hotel"></i> AGYEI TWUM LODGE</h5>
+                    <p>Experience luxury and comfort at its finest.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-map-marker-alt"></i> Location</h5>
+                    <p>123 Hotel Street<br>City, State 12345</p>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-phone"></i> Contact</h5>
+                    <p>
+                        Email: info@agyeitwumlodge.com<br>
+                        Phone: (123) 456-7890
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2);">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 AGYEI TWUM LODGE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

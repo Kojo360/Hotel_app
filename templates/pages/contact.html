@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us - AGYEI TWUM LODGE{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="fas fa-envelope"></i> Contact Us
+        </h1>
+        
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Get in Touch</h3>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt text-primary"></i> Address</h5>
+                            <p class="ms-4">123 Hotel Street<br>City, State 12345</p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone text-primary"></i> Phone</h5>
+                            <p class="ms-4"><a href="tel:+11234567890" class="text-decoration-none">(123) 456-7890</a></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope text-primary"></i> Email</h5>
+                            <p class="ms-4"><a href="mailto:info@grandhotel.com" class="text-decoration-none">info@grandhotel.com</a></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fab fa-whatsapp text-success"></i> WhatsApp</h5>
+                            <p class="ms-4">
+                                <a href="https://wa.me/{{ whatsapp_phone }}" target="_blank" class="btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> Chat with Us
+                                </a>
+                            </p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-clock text-primary"></i> Business Hours</h5>
+                            <p class="ms-4">
+                                <strong>Reception:</strong> 24/7<br>
+                                <strong>Restaurant:</strong> 7:00 AM - 11:00 PM
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Complaint Form -->
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        <p class="text-muted">Have a question or concern? Fill out the form below and we'll get back to you as soon as possible.</p>
+                        
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-paper-plane"></i> Submit Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-0">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648750455!2d-73.98823668459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ room.name }} - AGYEI TWUM LODGE{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <!-- Room Details -->
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4">
+                {% if room.image %}
+                    <img src="{{ room.image.url }}" class="img-fluid rounded shadow" alt="{{ room.name }}" style="width: 100%; height: 400px; object-fit: cover;">
+                {% else %}
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=600&fit=crop" class="img-fluid rounded shadow" alt="{{ room.name }}" style="width: 100%; height: 400px; object-fit: cover;">
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'rooms:room_list' %}">Rooms</a></li>
+                        <li class="breadcrumb-item active">{{ room.name }}</li>
+                    </ol>
+                </nav>
+                
+                <h1 class="mb-3">{{ room.name }}</h1>
+                <h3 class="text-primary mb-4">
+                    ${{ room.price }} <small class="text-muted">per night</small>
+                </h3>
+                
+                <p class="lead">{{ room.description }}</p>
+                
+                <div class="card bg-light border-0 mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-star text-warning"></i> Amenities</h5>
+                        <ul class="list-unstyled mb-0">
+                            {% for amenity in room.get_amenities_list %}
+                                <li class="mb-2">
+                                    <i class="fas fa-check-circle text-success"></i> {{ amenity }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Booking Form -->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="mb-4 text-center">
+                            <i class="fas fa-calendar-check text-primary"></i> Book This Room
+                        </h2>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i> 
+                            <strong>Booking Process:</strong> After submitting this form, you'll be redirected to WhatsApp 
+                            to confirm your booking and arrange payment with our team.
+                        </div>
+                        
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label">Full Name *</label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger small">{{ form.name.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number *</label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger small">{{ form.phone.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    <div class="text-danger small">{{ form.email.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.check_in.id_for_label }}" class="form-label">Check-in Date *</label>
+                                    {{ form.check_in }}
+                                    {% if form.check_in.errors %}
+                                        <div class="text-danger small">{{ form.check_in.errors }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="{{ form.check_out.id_for_label }}" class="form-label">Check-out Date *</label>
+                                    {{ form.check_out }}
+                                    {% if form.check_out.errors %}
+                                        <div class="text-danger small">{{ form.check_out.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="{{ form.special_request.id_for_label }}" class="form-label">Special Requests (Optional)</label>
+                                {{ form.special_request }}
+                                {% if form.special_request.errors %}
+                                    <div class="text-danger small">{{ form.special_request.errors }}</div>
+                                {% endif %}
+                            </div>
+                            
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {{ form.non_field_errors }}
+                                </div>
+                            {% endif %}
+                            
+                            <button type="submit" class="btn btn-whatsapp btn-lg w-100">
+                                <i class="fab fa-whatsapp"></i> Submit & Continue to WhatsApp
+                            </button>
+                        </form>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                <i class="fas fa-lock"></i> Your information is secure and will only be used for booking purposes.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set minimum date to today for check-in
+    document.addEventListener('DOMContentLoaded', function() {
+        var today = new Date().toISOString().split('T')[0];
+        var checkInInput = document.querySelector('input[name="check_in"]');
+        var checkOutInput = document.querySelector('input[name="check_out"]');
+        
+        if (checkInInput) {
+            checkInInput.setAttribute('min', today);
+        }
+        
+        if (checkInInput && checkOutInput) {
+            checkInInput.addEventListener('change', function() {
+                var checkInDate = new Date(this.value);
+                checkInDate.setDate(checkInDate.getDate() + 1);
+                var minCheckOut = checkInDate.toISOString().split('T')[0];
+                checkOutInput.setAttribute('min', minCheckOut);
+            });
+        }
+    });
+</script>
+{% endblock %}
