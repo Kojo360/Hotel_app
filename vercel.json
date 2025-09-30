@@ -1,17 +1,18 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "manage.py", "use": "@vercel/python" }
-  ],
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.11"
+    }
+  },
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/static/(.*)", "headers": { "Cache-Control": "s-maxage=31536000, immutable" }, "dest": "/static/$1" },
     { "src": "/media/(.*)", "dest": "/media/$1" },
-    { "src": "/(.*)", "dest": "/manage.py" }
+    { "src": "/(.*)", "dest": "/api/index.py" }
   ],
   "env": {
     "PYTHONUNBUFFERED": "1",
     "DJANGO_SETTINGS_MODULE": "hotel_app.settings",
-    "SECRET_KEY": "${SECRET_KEY}",
     "DEBUG": "False"
   }
 }
