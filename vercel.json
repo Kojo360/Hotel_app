@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    }
-  ],
+  
   "routes": [
     { "src": "/static/(.*)", "headers": { "Cache-Control": "s-maxage=31536000, immutable" }, "dest": "staticfiles/$1" },
     { "src": "/media/(.*)", "dest": "media/$1" },
