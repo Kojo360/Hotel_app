@@ -1,9 +1,24 @@
 from django.contrib import admin
+from django import forms
 from .models import Room, Booking
+
+
+class RoomAdminForm(forms.ModelForm):
+    """Force the admin to use a URL input for the image field (no file uploads)."""
+    image = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={'placeholder': 'https://example.com/image.jpg'}),
+        help_text='Paste a direct image URL (e.g. Unsplash)'
+    )
+
+    class Meta:
+        model = Room
+        fields = '__all__'
 
 
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
+    form = RoomAdminForm
     list_display = ['name', 'price', 'is_visible', 'created_at']
     list_filter = ['is_visible', 'created_at']
     search_fields = ['name', 'description', 'amenities']
