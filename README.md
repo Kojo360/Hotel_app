@@ -113,6 +113,40 @@ The admin receives this message directly on WhatsApp for confirmation.
 - SQLite (default, can be changed to PostgreSQL/MySQL)
 - Pillow (for image handling)
 
+## 📚 Documentation
+
+Comprehensive guides are available to help you manage your hotel website:
+
+### For Content Managers
+
+- **[Admin Content Guide](ADMIN_CONTENT_GUIDE.md)** - Complete guide on how to add rooms, menu items, and bar items with detailed examples
+- **[Quick Reference](QUICK_REFERENCE.md)** - Quick reference card for adding content
+- **[Sample Content](SAMPLE_CONTENT.md)** - Ready-to-use example content you can copy and paste
+- **[Workflow Guide](WORKFLOW_GUIDE.md)** - Step-by-step workflows and best practices
+
+### Quick Start for Admins
+
+1. **Create your admin account:**
+   ```powershell
+   python manage.py createsuperuser
+   ```
+
+2. **Start the server:**
+   ```powershell
+   python manage.py runserver
+   ```
+
+3. **Access the admin panel:**
+   - Go to http://127.0.0.1:8000/admin/
+   - Login with your credentials
+
+4. **Start adding content:**
+   - Add 3-5 rooms
+   - Add 10-15 restaurant menu items
+   - Add 15-20 bar items
+
+For detailed instructions, see the [Admin Content Guide](ADMIN_CONTENT_GUIDE.md).
+
 ## License
 
 This project is open source and available for educational purposes.
