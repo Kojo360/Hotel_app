@@ -16,8 +16,13 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-produc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',') if config('ALLOWED_HOSTS', default='') else []
-CSRF_TRUSTED_ORIGINS = [o for o in config('CSRF_TRUSTED_ORIGINS', default='').split(',') if o]
+# Parse ALLOWED_HOSTS from environment
+allowed_hosts_str = config('ALLOWED_HOSTS', default='')
+ALLOWED_HOSTS = [h.strip() for h in allowed_hosts_str.split(',') if h.strip()] if allowed_hosts_str else ['localhost', '127.0.0.1', '.vercel.app']
+
+# Parse CSRF_TRUSTED_ORIGINS from environment
+csrf_origins_str = config('CSRF_TRUSTED_ORIGINS', default='')
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in csrf_origins_str.split(',') if o.strip()]
 
 
 # Application definition
