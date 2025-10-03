@@ -6,6 +6,7 @@ from pathlib import Path
 from decouple import config
 import dj_database_url
 import tempfile
+import importlib
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -180,7 +181,14 @@ USE_STATIC_DATA = config('USE_STATIC_DATA', default=False, cast=bool)
 # Optional object storage (S3-compatible) settings. Enable by setting
 # AWS_STORAGE_BUCKET_NAME and AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 if config('AWS_STORAGE_BUCKET_NAME', default=''):
-    # Avoid importing boto3 unless needed at runtime
+    # Require django-storages to be installed when enabling S3 storage
+    if importlib.util.find_spec('storages') is None:
+        raise ImportError(
+            "django-storages is required to use AWS storage. Install it by adding "
+            "'django-storages[boto3]' (or equivalent) to your dependencies before setting "
+            "AWS_STORAGE_BUCKET_NAME."
+        )
+
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')

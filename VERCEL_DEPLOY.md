@@ -44,7 +44,9 @@ If you want admins to upload images (instead of pasting URLs) you can enable an 
 
 2) The app will enable S3 storage automatically when `AWS_STORAGE_BUCKET_NAME` is set. The build step will still run migrations if `DATABASE_URL` is present.
 
-3) Required Python packages were added to `requirements.txt`: `django-storages[boto3]` and `boto3`.
+3) Install required Python packages before deploying with S3 enabled. They are not included in the default `requirements.txt` to keep deployments lightweight:
+   - `django-storages[boto3]`
+   - `boto3`
 
 4) Once S3 is enabled, `ImageField`/`FileField` storage will use S3 and files will be persisted and served from the bucket.
 
