@@ -11,7 +11,12 @@ class MenuItem(models.Model):
         decimal_places=2,
         validators=[MinValueValidator(0)]
     )
-    image = models.ImageField(upload_to='menu/', blank=True, null=True)
+    image = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Paste a direct image URL (e.g. Unsplash)"
+    )
     category = models.CharField(
         max_length=100,
         choices=[
@@ -31,3 +36,8 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return f"{self.name} - ${self.price}"
+
+    @property
+    def image_url(self) -> str:
+        """Return the image URL string (empty if not provided)."""
+        return self.image or ""

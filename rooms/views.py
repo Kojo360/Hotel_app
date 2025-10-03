@@ -32,6 +32,7 @@ def room_list(request):
             else:
                 amenities_list = []
             r['amenities_list'] = amenities_list
+            r['image_url'] = r.get('image')
             normalized.append(r)
         # Expect list of dicts with keys: id, name, description, price, amenities, image
         context = {'rooms': normalized, 'static_mode': True}
@@ -58,6 +59,7 @@ def room_detail(request, pk):
             room['amenities_list'] = [str(a).strip() for a in amenities if str(a).strip()]
         else:
             room['amenities_list'] = []
+        room['image_url'] = room.get('image')
         FormClass = BookingRequestForm
     else:
         room = get_object_or_404(Room, pk=pk, is_visible=True)

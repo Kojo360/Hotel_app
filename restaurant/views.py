@@ -19,7 +19,11 @@ def menu_list(request):
     static_mode = getattr(settings, 'USE_STATIC_DATA', False)
 
     if static_mode:
-        data = _load_static_json('restaurant') or []
+        raw_items = _load_static_json('restaurant') or []
+        data = []
+        for item in raw_items:
+            item['image_url'] = item.get('image')
+            data.append(item)
         # data expected as list of dicts with keys: name, description, price, image, category
         categories = {
             'appetizer': [i for i in data if i.get('category') == 'appetizer'],

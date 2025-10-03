@@ -12,7 +12,12 @@ class Room(models.Model):
         validators=[MinValueValidator(0)]
     )
     amenities = models.TextField(help_text="Enter amenities separated by commas")
-    image = models.ImageField(upload_to='rooms/', blank=True, null=True)
+    image = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Paste a direct image URL (e.g. Unsplash)"
+    )
     is_visible = models.BooleanField(default=True, help_text="Toggle room visibility to customers")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -26,6 +31,11 @@ class Room(models.Model):
     def get_amenities_list(self):
         """Return amenities as a list"""
         return [amenity.strip() for amenity in self.amenities.split(',') if amenity.strip()]
+
+    @property
+    def image_url(self) -> str:
+        """Return the image URL string (empty if not provided)."""
+        return self.image or ""
 
 
 class Booking(models.Model):

@@ -15,7 +15,8 @@ class RoomAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'price')
         }),
         ('Details', {
-            'fields': ('amenities', 'image', 'is_visible')
+            'fields': ('amenities', 'image', 'is_visible'),
+            'description': "Use HTTPS image URLs (e.g. Unsplash) instead of uploading files."
         }),
     )
 

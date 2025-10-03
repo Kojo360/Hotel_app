@@ -14,19 +14,13 @@
                 {% for room in rooms %}
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 border-0 shadow-sm">
-                            {% if static_mode %}
-                                {% if room.image %}
-                                    <img src="{{ room.image }}" class="card-img-top" alt="{{ room.name }}" style="height: 250px; object-fit: cover;">
+                            {% with image_url=room.image_url %}
+                                {% if image_url %}
+                                    <img src="{{ image_url }}" class="card-img-top" alt="{{ room.name }}" style="height: 250px; object-fit: cover;">
                                 {% else %}
                                     <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=500&fit=crop" class="card-img-top" alt="{{ room.name }}" style="height: 250px; object-fit: cover;">
                                 {% endif %}
-                            {% else %}
-                                {% if room.image %}
-                                    <img src="{{ room.image.url }}" class="card-img-top" alt="{{ room.name }}" style="height: 250px; object-fit: cover;">
-                                {% else %}
-                                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=500&fit=crop" class="card-img-top" alt="{{ room.name }}" style="height: 250px; object-fit: cover;">
-                                {% endif %}
-                            {% endif %}
+                            {% endwith %}
 
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ room.name }}</h5>

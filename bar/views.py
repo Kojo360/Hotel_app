@@ -19,7 +19,11 @@ def bar_menu(request):
     static_mode = getattr(settings, 'USE_STATIC_DATA', False)
 
     if static_mode:
-        data = _load_static_json('bar') or []
+        raw_items = _load_static_json('bar') or []
+        data = []
+        for item in raw_items:
+            item['image_url'] = item.get('image')
+            data.append(item)
         featured_items = [i for i in data if i.get('is_featured')]
         categories = {
             'beer': [i for i in data if i.get('category') == 'beer'],

@@ -15,6 +15,7 @@ class MenuItemAdmin(admin.ModelAdmin):
             'fields': ('name', 'description', 'category', 'price')
         }),
         ('Display Settings', {
-            'fields': ('image', 'is_available')
+            'fields': ('image', 'is_available'),
+            'description': "Provide a direct HTTPS image URL for menu photos."
         }),
     )

@@ -18,7 +18,8 @@ class BarItemAdmin(admin.ModelAdmin):
             'fields': ('category', 'alcohol_content', 'volume')
         }),
         ('Image', {
-            'fields': ('image',)
+            'fields': ('image',),
+            'description': "Paste a direct HTTPS image URL instead of uploading files."
         }),
         ('Availability', {
             'fields': ('is_available', 'is_featured')
